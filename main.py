@@ -14,6 +14,8 @@ class BallotQApp(QMainWindow):
         self.voter = VotingBallots()
         self.ui.Submit_button.clicked.connect(self.handle_submit)
 
+        self.ui.Feedback_label.setStyleSheet('font-size: 17pt;')
+
     def handle_submit(self):
         """
         deals with all submit button antics.
@@ -30,7 +32,15 @@ class BallotQApp(QMainWindow):
             candidate = 'BILL'
 
         feedback = self.voter.validation_votes(voter_id, candidate)
+
+        #changing color of the feedback label
+        if feedback == 'Vote Successful':
+            self.ui.Feedback_label.setStyleSheet('color: green; font-size: 17pt;')
+        else:
+            self.ui.Feedback_label.setStyleSheet('color: red; font-size: 17pt;')
+
         self.ui.Feedback_label.setText(feedback)
+
         if feedback == 'Vote Successful':
             self.ui.ID_input.clear()
             self.ui.Jane_button.setChecked(False)
