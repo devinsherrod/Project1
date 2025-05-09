@@ -43,9 +43,15 @@ class BallotQApp(QMainWindow):
 
         if feedback == 'Vote Successful':
             self.ui.ID_input.clear()
+            self.ui.Jane_button.setAutoExclusive(False)
+            self.ui.John_button.setAutoExclusive(False)
+            self.ui.Bill_button.setAutoExclusive(False)
             self.ui.Jane_button.setChecked(False)
             self.ui.John_button.setChecked(False)
             self.ui.Bill_button.setChecked(False)
+            self.ui.Jane_button.setAutoExclusive(True)
+            self.ui.John_button.setAutoExclusive(True)
+            self.ui.Bill_button.setAutoExclusive(True)
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
